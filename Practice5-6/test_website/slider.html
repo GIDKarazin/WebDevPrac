@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="assets/js/script.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        window.onload = function() {
+            let slides = [
+                {
+                    title: "Google",
+                    background: "public/images/google.jpg",
+                    link: "http://google.com"
+                }, {
+                    title: "Chess",
+                    background: "public/images/chess.jpg",
+                    link: "https://www.chess.com/ru/play/online"
+                }, {
+                    title: "Microsoft",
+                    background: "public/images/Mic.jpg",
+                        link: "https://www.microsoft.com/uk-ua/edge"
+                }
+            ]
+            Slider.initSlider(slides);
+        };
+    </script>
+</head>
+<body>
+<header class="header"><p>
+    <img src="assets/img/logo.png" width="60" height="50" alt="logo error"> </p> </header>
+<div class="container">
+    <main class="center column">
+        <article>
+            <h1>Slider</h1>
+            <p>
+            <div id="slider"></div>
+            <input id="b1" class="buttons" type="button" value="Prev"/>
+            <input id="b2" class="buttons" type="button" value="Next"/>
+            <input id="b3" class="buttons" type="button" value="Hide"/>
+            <input id="b4" class="buttons" type="button" value="Auto"/>
+
+            <script>
+                index = 0;
+
+                function hnd1() {
+                    Slider.prevSlide();
+                }
+                function hnd2() {
+                    Slider.nextSlide();
+                }
+                function hnd3(){
+                    if (index % 2 == 0) {
+                        document.getElementById("slider").style.display = "none";
+                        b3.value = "Show";
+                    }
+                    else {
+                        document.getElementById("slider").style.display = 'block';
+                        b3.value = "Hide";
+                    }
+                    index++;
+                }
+
+                b1.addEventListener("click", hnd1);
+                b2.addEventListener("click", hnd2);
+                b3.addEventListener("click", hnd3);
+                b4.addEventListener('click', (event)=>{
+                    if (event.target.classList.contains('start')){
+                        event.target.innerHTML = 'Off';
+                        b4.value = 'Auto';
+                        clearInterval(interval)
+                    } else {
+                        event.target.innerHTML = 'Auto';
+                        b4.value = 'Off';
+                        interval = setInterval(()=>{
+                            Slider.nextSlide();
+                        },1000)
+                    }
+                    event.target.classList.toggle('start')
+                })
+
+            </script>
+            </p>
+            <p id = "slideJS">
+            </p>
+        </article>
+    </main>
+    <nav class="left column">
+        <h4>Content</h4>
+        <ul>
+            <li><a href="contact.html">Registration form</a></li>
+            <li><a href="about.html">Information</a></li>
+            <li><a href="slider.html">Slider</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+        </ul>
+    </nav>
+    <div class="right column">
+        <h4>Annoying ads</h4>
+        <p></p>
+    </div>
+    <div class="push"></div>
+</div>
+<div class="footer-wrapper">
+    <footer class="footer"><p>The necessary information</p></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.canvas{
+   background: #eee;
+}
+.btn{
+   background-color: #4CAF50;
+   border: none;
+   color: white;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   cursor: pointer;
+   margin: 6px;
+   height: 58px;
+   width: 58px;
+}
+.toolbar {
+   width: 500px;
+   display: flex;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+}
+#color-picker {
+   margin: 6px;
+   height:  58px;
+   width: 58px;
+}
